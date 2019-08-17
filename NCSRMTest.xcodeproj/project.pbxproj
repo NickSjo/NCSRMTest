@@ -12,7 +12,6 @@
 		85E99FD2230829FE00037D19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85E99FD0230829FE00037D19 /* Main.storyboard */; };
 		85E99FD4230829FF00037D19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85E99FD3230829FF00037D19 /* Assets.xcassets */; };
 		85E99FD7230829FF00037D19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85E99FD5230829FF00037D19 /* LaunchScreen.storyboard */; };
-		85E99FE2230829FF00037D19 /* NCSRMTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E99FE1230829FF00037D19 /* NCSRMTestTests.swift */; };
 		85E9A01D23082DB700037D19 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A01C23082DB700037D19 /* HTTPClient.swift */; };
 		85E9A01F230832E400037D19 /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A01E230832E400037D19 /* HTTPClientTests.swift */; };
 		85E9A0212308354800037D19 /* RESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A0202308354800037D19 /* RESTClient.swift */; };
@@ -39,7 +38,6 @@
 		85E99FD6230829FF00037D19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85E99FD8230829FF00037D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85E99FDD230829FF00037D19 /* NCSRMTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NCSRMTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		85E99FE1230829FF00037D19 /* NCSRMTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCSRMTestTests.swift; sourceTree = "<group>"; };
 		85E99FE3230829FF00037D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85E9A01C23082DB700037D19 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		85E9A01E230832E400037D19 /* HTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientTests.swift; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 		85E99FE0230829FF00037D19 /* NCSRMTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				85E99FE1230829FF00037D19 /* NCSRMTestTests.swift */,
 				85E9A01E230832E400037D19 /* HTTPClientTests.swift */,
 				85E9A0272308376300037D19 /* RESTClientTests.swift */,
 				85E99FE3230829FF00037D19 /* Info.plist */,
@@ -242,7 +239,6 @@
 			files = (
 				85E9A0282308376300037D19 /* RESTClientTests.swift in Sources */,
 				85E9A01F230832E400037D19 /* HTTPClientTests.swift in Sources */,
-				85E99FE2230829FF00037D19 /* NCSRMTestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
