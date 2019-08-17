@@ -14,10 +14,18 @@ class CharactersListViewModel: ListViewModel {
     var allowsPagination: Bool
     var allowsRefresh: Bool
     var characters: [Character]
-    var didUpdate: (() -> Void)?
+    var didUpdate: (([Character], [Character], Bool) -> Void)?
     
     private var info: Info?
     private let baseURL = "https://rickandmortyapi.com/api/character/"
+    
+    private var hasMorePages: Bool {
+        if let info = info, info.next.count > 0 {
+            return true
+        }
+        
+        return false
+    }
     
     init() {
         allowsDeletion = false
@@ -53,20 +61,29 @@ private extension CharactersListViewModel {
         RESTClient().performDataTask(with: url) { [weak self] (result: RESTClientResult<CharactersResponse>) in
             switch result {
             case .success(let charactersResponse):
-                self?.info = charactersResponse.info
-                if url == self?.baseURL {
-                    // We are at first page, replace characters array
-                    self?.characters = charactersResponse.results
-                } else {
-                    // We are not at first page, append new data
-                    self?.characters.append(contentsOf: charactersResponse.results)
-                }
-                self?.didUpdate?()
+                self?.update(for: url, charactersResponse)
             case .failure:
-                self?.didUpdate?()
+                break
             }
         }
     }
     
+    func update(for url: String, _ charactersResponse: CharactersResponse) {
+        info = charactersResponse.info
+        
+        let prev = characters
+        
+        if url == baseURL {
+            // We are at first page, replace characters array
+            characters = charactersResponse.results
+        } else {
+            // We are not at first page, append new data
+            characters.append(contentsOf: charactersResponse.results)
+        }
+        
+        let target = characters
+        
+        didUpdate?(prev, target, hasMorePages)
+    }
 }
 

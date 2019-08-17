@@ -18,6 +18,6 @@ protocol ListViewModel {
     var allowsItemDetails: Bool { get }
     var allowsPagination: Bool { get }
     var allowsRefresh: Bool { get }
-    var didUpdate: (() -> Void)? { get set }
+    var didUpdate: ((_ previousSnapshot: [Character], _ targetSnapshot: [Character], _ hasMorePages: Bool) -> Void)? { get set }
     var characters: [Character] { get set }
 }

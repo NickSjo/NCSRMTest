@@ -12,15 +12,20 @@ class ListTableViewController: UITableViewController, StoryboardInstantiated {
 
     var viewModel: ListViewModel!
     
+    private var dataSourceSnapshot: [Character] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.rowHeight = UITableView.automaticDimension;
+        tableView.estimatedRowHeight = 61.0;
         
         if viewModel.allowsRefresh {
             setupRefreshControl()
         }
         
-        viewModel.didUpdate = { [weak self] in
-            self?.tableView.reloadData()
+        viewModel.didUpdate = { [weak self] (previous, target, hasMorePages) in
+            self?.updateTableViewContent(with: previous, target, hasMorePages)
         }
         
         viewModel.load()
@@ -81,6 +86,27 @@ private extension ListTableViewController {
     @objc private func refreshData() {
         viewModel.refresh()
         refreshControl?.endRefreshing()
+    }
+    
+    private func updateTableViewContent(with previousSnapshot: [Character], _ targetSnapshot: [Character], _ hasMorePages: Bool) {
+        var deletedItems: [IndexPath] = []
+        if targetSnapshot.count < previousSnapshot.count {
+            let changes = (targetSnapshot.count..<previousSnapshot.count).map({ IndexPath(row: $0, section: 0) })
+            deletedItems.append(contentsOf: changes)
+        }
+
+        var insertedItems: [IndexPath] = []
+        if targetSnapshot.count > previousSnapshot.count {
+            let changes = (previousSnapshot.count..<targetSnapshot.count).map({ IndexPath(row: $0, section: 0) })
+            insertedItems.append(contentsOf: changes)
+        }
+        
+        tableView.beginUpdates()
+        tableView.insertRows(at: insertedItems, with: .none)
+        tableView.deleteRows(at: deletedItems, with: .none)
+        tableView.endUpdates()
+        
+        tableView.tableFooterView?.isHidden = (hasMorePages == false)
     }
     
 }

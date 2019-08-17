@@ -14,7 +14,7 @@ class FavoritesListViewModel: ListViewModel {
     var allowsItemDetails: Bool
     var allowsPagination: Bool
     var allowsRefresh: Bool
-    var didUpdate: (() -> Void)?
+    var didUpdate: (([Character], [Character], Bool) -> Void)?
     var characters: [Character]
     
     init() {
