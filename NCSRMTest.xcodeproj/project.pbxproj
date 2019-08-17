@@ -17,6 +17,7 @@
 		85E9A0212308354800037D19 /* RESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A0202308354800037D19 /* RESTClient.swift */; };
 		85E9A024230836AA00037D19 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A023230836AA00037D19 /* Model.swift */; };
 		85E9A0282308376300037D19 /* RESTClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A0272308376300037D19 /* RESTClientTests.swift */; };
+		85E9A040230880A900037D19 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A03F230880A900037D19 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		85E9A0202308354800037D19 /* RESTClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTClient.swift; sourceTree = "<group>"; };
 		85E9A023230836AA00037D19 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		85E9A0272308376300037D19 /* RESTClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTClientTests.swift; sourceTree = "<group>"; };
+		85E9A03F230880A900037D19 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +87,9 @@
 		85E99FCB230829FE00037D19 /* NCSRMTest */ = {
 			isa = PBXGroup;
 			children = (
-				85E9A01B23082DA500037D19 /* Networking */,
 				85E9A0222308369900037D19 /* Model */,
+				85E9A01B23082DA500037D19 /* Networking */,
+				85E9A03E2308808E00037D19 /* ViewControllers */,
 				85E99FCC230829FE00037D19 /* AppDelegate.swift */,
 				85E99FCE230829FE00037D19 /* ViewController.swift */,
 				85E99FD0230829FE00037D19 /* Main.storyboard */,
@@ -122,6 +125,14 @@
 				85E9A023230836AA00037D19 /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		85E9A03E2308808E00037D19 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				85E9A03F230880A900037D19 /* TabBarController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +239,7 @@
 				85E9A024230836AA00037D19 /* Model.swift in Sources */,
 				85E9A0212308354800037D19 /* RESTClient.swift in Sources */,
 				85E99FCF230829FE00037D19 /* ViewController.swift in Sources */,
+				85E9A040230880A900037D19 /* TabBarController.swift in Sources */,
 				85E99FCD230829FE00037D19 /* AppDelegate.swift in Sources */,
 				85E9A01D23082DB700037D19 /* HTTPClient.swift in Sources */,
 			);
