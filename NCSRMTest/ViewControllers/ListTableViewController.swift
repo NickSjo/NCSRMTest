@@ -15,6 +15,8 @@ class ListTableViewController: UITableViewController, StoryboardInstantiated {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupRefreshControl()
+        
         viewModel.didUpdate = { [weak self] in
             self?.tableView.reloadData()
         }
@@ -38,11 +40,30 @@ extension ListTableViewController { // MARK: Table view data source
         let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell", for: indexPath) as! CharacterCell
         cell.nameLabel.text = viewModel.characters[indexPath.row].name
         
+        if indexPath.row == viewModel.characters.count - 1 {
+            viewModel.loadNextPage()
+        }
+        
         return cell
     }
 }
 
 extension ListTableViewController { // MARK: Table view delegate
     
+    
+}
+
+private extension ListTableViewController {
+    
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        refreshControl?.tintColor = .black
+    }
+    
+    @objc private func refreshData() {
+        viewModel.refresh()
+        refreshControl?.endRefreshing()
+    }
     
 }

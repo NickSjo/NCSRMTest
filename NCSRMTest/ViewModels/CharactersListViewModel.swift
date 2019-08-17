@@ -22,6 +22,17 @@ class CharactersListViewModel {
     func load() {
         load(with: baseURL)
     }
+    
+    func refresh() {
+        info = nil
+        load()
+    }
+    
+    func loadNextPage() {
+        if let info = info, info.next.count > 0 {
+            load(with: info.next)
+        }
+    }
 }
 
 private extension CharactersListViewModel {
@@ -31,7 +42,13 @@ private extension CharactersListViewModel {
             switch result {
             case .success(let charactersResponse):
                 self?.info = charactersResponse.info
-                self?.characters = charactersResponse.results
+                if url == self?.baseURL {
+                    // We are at first page, replace characters array
+                    self?.characters = charactersResponse.results
+                } else {
+                    // We are not at first page, append new data
+                    self?.characters.append(contentsOf: charactersResponse.results)
+                }
                 self?.didUpdate?()
             case .failure:
                 self?.didUpdate?()
