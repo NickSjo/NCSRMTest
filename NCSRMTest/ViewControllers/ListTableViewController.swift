@@ -10,12 +10,14 @@ import UIKit
 
 class ListTableViewController: UITableViewController, StoryboardInstantiated {
 
-    var viewModel: CharactersListViewModel!
+    var viewModel: ListViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupRefreshControl()
+        if viewModel.allowsRefresh {
+            setupRefreshControl()
+        }
         
         viewModel.didUpdate = { [weak self] in
             self?.tableView.reloadData()
@@ -40,7 +42,7 @@ extension ListTableViewController { // MARK: Table view data source
         let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell", for: indexPath) as! CharacterCell
         cell.nameLabel.text = viewModel.characters[indexPath.row].name
         
-        if indexPath.row == viewModel.characters.count - 1 {
+        if viewModel.allowsPagination, indexPath.row == viewModel.characters.count - 1 {
             viewModel.loadNextPage()
         }
         
@@ -50,6 +52,21 @@ extension ListTableViewController { // MARK: Table view data source
 
 extension ListTableViewController { // MARK: Table view delegate
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var editActions: [UITableViewRowAction] = []
+        
+        if viewModel.allowsDeletion {
+            let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] (action, indexPath) in
+                self?.viewModel.characters.remove(at: indexPath.row)
+                self?.tableView.beginUpdates()
+                self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self?.tableView.endUpdates()
+            }
+            editActions.append(deleteAction)
+        }
+        
+        return editActions
+    }
     
 }
 

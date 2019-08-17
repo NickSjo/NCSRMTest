@@ -21,6 +21,8 @@
 		85E9A0452308827700037D19 /* StoryboardInstantiated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A0442308827700037D19 /* StoryboardInstantiated.swift */; };
 		85E9A0482308849400037D19 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A0472308849400037D19 /* CharacterCell.swift */; };
 		85E9A04D2308852B00037D19 /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A04C2308852B00037D19 /* CharactersListViewModel.swift */; };
+		85E9A04F23088EB200037D19 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A04E23088EB200037D19 /* ListViewModel.swift */; };
+		85E9A05123088F9400037D19 /* FavoritesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A05023088F9400037D19 /* FavoritesListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		85E9A0442308827700037D19 /* StoryboardInstantiated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiated.swift; sourceTree = "<group>"; };
 		85E9A0472308849400037D19 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		85E9A04C2308852B00037D19 /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
+		85E9A04E23088EB200037D19 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		85E9A05023088F9400037D19 /* FavoritesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				85E9A04C2308852B00037D19 /* CharactersListViewModel.swift */,
+				85E9A05023088F9400037D19 /* FavoritesListViewModel.swift */,
+				85E9A04E23088EB200037D19 /* ListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -269,6 +275,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85E9A04F23088EB200037D19 /* ListViewModel.swift in Sources */,
+				85E9A05123088F9400037D19 /* FavoritesListViewModel.swift in Sources */,
 				85E9A04D2308852B00037D19 /* CharactersListViewModel.swift in Sources */,
 				85E9A0452308827700037D19 /* StoryboardInstantiated.swift in Sources */,
 				85E9A024230836AA00037D19 /* Model.swift in Sources */,

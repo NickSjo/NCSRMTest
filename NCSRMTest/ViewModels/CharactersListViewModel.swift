@@ -8,7 +8,11 @@
 
 import UIKit
 
-class CharactersListViewModel {
+class CharactersListViewModel: ListViewModel {
+    var allowsDeletion: Bool
+    var allowsItemDetails: Bool
+    var allowsPagination: Bool
+    var allowsRefresh: Bool
     var characters: [Character]
     var didUpdate: (() -> Void)?
     
@@ -16,6 +20,10 @@ class CharactersListViewModel {
     private let baseURL = "https://rickandmortyapi.com/api/character/"
     
     init() {
+        allowsDeletion = false
+        allowsItemDetails = true
+        allowsPagination = true
+        allowsRefresh = true
         characters = []
     }
     
@@ -23,15 +31,19 @@ class CharactersListViewModel {
         load(with: baseURL)
     }
     
+    func loadNextPage() {
+        if let info = info, info.next.count > 0 {
+            load(with: info.next)
+        }
+    }
+    
     func refresh() {
         info = nil
         load()
     }
     
-    func loadNextPage() {
-        if let info = info, info.next.count > 0 {
-            load(with: info.next)
-        }
+    func delete() {
+        // Not supported
     }
 }
 

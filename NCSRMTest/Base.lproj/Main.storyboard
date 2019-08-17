@@ -33,8 +33,8 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="lq0-n2-3YV" secondAttribute="bottom" constant="20" symbolic="YES" id="3O1-5C-7u7"/>
-                                        <constraint firstItem="lq0-n2-3YV" firstAttribute="top" secondItem="wwe-jm-ebm" secondAttribute="top" constant="20" symbolic="YES" id="Mms-iJ-Owf"/>
+                                        <constraint firstAttribute="bottom" secondItem="lq0-n2-3YV" secondAttribute="bottom" priority="750" constant="20" symbolic="YES" id="3O1-5C-7u7"/>
+                                        <constraint firstItem="lq0-n2-3YV" firstAttribute="top" secondItem="wwe-jm-ebm" secondAttribute="top" priority="750" constant="20" symbolic="YES" id="Mms-iJ-Owf"/>
                                         <constraint firstAttribute="trailing" secondItem="lq0-n2-3YV" secondAttribute="trailing" constant="20" symbolic="YES" id="Tyj-gh-AiQ"/>
                                         <constraint firstItem="lq0-n2-3YV" firstAttribute="leading" secondItem="wwe-jm-ebm" secondAttribute="leading" constant="20" symbolic="YES" id="reK-Eh-KMw"/>
                                     </constraints>

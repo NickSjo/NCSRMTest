@@ -27,7 +27,7 @@ private extension TabBarController {
         navController1.tabBarItem = UITabBarItem(title: "Characters", image: nil, tag: 0)
         
         let viewController2 = ListTableViewController.instantiate("Main")
-        viewController2.viewModel = CharactersListViewModel()
+        viewController2.viewModel = FavoritesListViewModel()
         let navController2 = UINavigationController(rootViewController: viewController2)
         navController2.tabBarItem = UITabBarItem(title: "Favorites", image: nil, tag: 1)
         
