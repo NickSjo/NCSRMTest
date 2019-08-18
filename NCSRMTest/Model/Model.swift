@@ -24,6 +24,10 @@ struct Character: Decodable {
 struct Location: Decodable {
     var name: String
     var url: String
+    var type: String?
+    var dimension: String?
+    var residents: [String]?
+    var created: String?
 }
 
 struct Origin: Decodable {

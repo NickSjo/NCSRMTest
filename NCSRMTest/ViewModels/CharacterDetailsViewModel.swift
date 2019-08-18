@@ -19,6 +19,9 @@ class CharacterDetailsViewModel {
     var locationName: String {
         return character.location.name
     }
+    var location: Location {
+        return character.location
+    }
     
     private var character: Character
     
@@ -31,4 +34,5 @@ class CharacterDetailsViewModel {
             completion(image)
         }
     }
+    
 }

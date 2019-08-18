@@ -29,7 +29,10 @@ class CharacterDetailsViewController: UIViewController, StoryboardInstantiated {
 extension CharacterDetailsViewController { // MARK: Actions
     
     @IBAction func didSelectLocationAction(_ sender: Any) {
-
+        let vc = LocationDetailsViewController.instantiate("Main")
+        vc.viewModel = LocationDetailsViewModel(viewModel.location)
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func addToFavoritesAction(_ sender: Any) {

@@ -23,6 +23,12 @@
 		85E9A04D2308852B00037D19 /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A04C2308852B00037D19 /* CharactersListViewModel.swift */; };
 		85E9A04F23088EB200037D19 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A04E23088EB200037D19 /* ListViewModel.swift */; };
 		85E9A05123088F9400037D19 /* FavoritesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A05023088F9400037D19 /* FavoritesListViewModel.swift */; };
+		85E9A0532308A72B00037D19 /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A0522308A72B00037D19 /* CharacterDetailsViewController.swift */; };
+		85E9A0572308AE5800037D19 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A0562308AE5800037D19 /* ImageCache.swift */; };
+		85E9A0592308B6F100037D19 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A0582308B6F100037D19 /* LocationDetailsViewController.swift */; };
+		85E9A05D23093A8F00037D19 /* ImageCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A05C23093A8F00037D19 /* ImageCacheTests.swift */; };
+		85E9A05F23093E9700037D19 /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A05E23093E9700037D19 /* CharacterDetailsViewModel.swift */; };
+		85E9A0612309444400037D19 /* LocationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A0602309444400037D19 /* LocationDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +62,12 @@
 		85E9A04C2308852B00037D19 /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
 		85E9A04E23088EB200037D19 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		85E9A05023088F9400037D19 /* FavoritesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewModel.swift; sourceTree = "<group>"; };
+		85E9A0522308A72B00037D19 /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
+		85E9A0562308AE5800037D19 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		85E9A0582308B6F100037D19 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
+		85E9A05C23093A8F00037D19 /* ImageCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheTests.swift; sourceTree = "<group>"; };
+		85E9A05E23093E9700037D19 /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
+		85E9A0602309444400037D19 /* LocationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +129,7 @@
 			children = (
 				85E9A01E230832E400037D19 /* HTTPClientTests.swift */,
 				85E9A0272308376300037D19 /* RESTClientTests.swift */,
+				85E9A05C23093A8F00037D19 /* ImageCacheTests.swift */,
 				85E99FE3230829FF00037D19 /* Info.plist */,
 			);
 			path = NCSRMTestTests;
@@ -144,6 +157,8 @@
 			children = (
 				85E9A03F230880A900037D19 /* TabBarController.swift */,
 				85E9A0412308817400037D19 /* ListTableViewController.swift */,
+				85E9A0522308A72B00037D19 /* CharacterDetailsViewController.swift */,
+				85E9A0582308B6F100037D19 /* LocationDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -152,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				85E9A0442308827700037D19 /* StoryboardInstantiated.swift */,
+				85E9A0562308AE5800037D19 /* ImageCache.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -167,9 +183,11 @@
 		85E9A049230884E900037D19 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				85E9A05E23093E9700037D19 /* CharacterDetailsViewModel.swift */,
 				85E9A04C2308852B00037D19 /* CharactersListViewModel.swift */,
 				85E9A05023088F9400037D19 /* FavoritesListViewModel.swift */,
 				85E9A04E23088EB200037D19 /* ListViewModel.swift */,
+				85E9A0602309444400037D19 /* LocationDetailsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -275,16 +293,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85E9A0592308B6F100037D19 /* LocationDetailsViewController.swift in Sources */,
 				85E9A04F23088EB200037D19 /* ListViewModel.swift in Sources */,
 				85E9A05123088F9400037D19 /* FavoritesListViewModel.swift in Sources */,
 				85E9A04D2308852B00037D19 /* CharactersListViewModel.swift in Sources */,
+				85E9A0612309444400037D19 /* LocationDetailsViewModel.swift in Sources */,
 				85E9A0452308827700037D19 /* StoryboardInstantiated.swift in Sources */,
 				85E9A024230836AA00037D19 /* Model.swift in Sources */,
+				85E9A0532308A72B00037D19 /* CharacterDetailsViewController.swift in Sources */,
 				85E9A0212308354800037D19 /* RESTClient.swift in Sources */,
+				85E9A05F23093E9700037D19 /* CharacterDetailsViewModel.swift in Sources */,
 				85E9A0482308849400037D19 /* CharacterCell.swift in Sources */,
 				85E9A040230880A900037D19 /* TabBarController.swift in Sources */,
 				85E99FCD230829FE00037D19 /* AppDelegate.swift in Sources */,
 				85E9A01D23082DB700037D19 /* HTTPClient.swift in Sources */,
+				85E9A0572308AE5800037D19 /* ImageCache.swift in Sources */,
 				85E9A0422308817400037D19 /* ListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85E9A0282308376300037D19 /* RESTClientTests.swift in Sources */,
+				85E9A05D23093A8F00037D19 /* ImageCacheTests.swift in Sources */,
 				85E9A01F230832E400037D19 /* HTTPClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
