@@ -45,21 +45,25 @@ class HTTPClient {
         
         let urlRequest = URLRequest(url: url)
         
+        print("GET request to \(url)")
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
-            if let error = error {
-                completion(HTTPResult.failure(error))
-            } else if let response = response as? HTTPURLResponse {
-                if (200...299).contains(response.statusCode) {
-                    if let data = data {
-                        completion(HTTPResult.success(data))
+            DispatchQueue.main.async {
+                if let error = error {
+                    completion(HTTPResult.failure(error))
+                } else if let response = response as? HTTPURLResponse {
+                    if (200...299).contains(response.statusCode) {
+                        if let data = data {
+                            completion(HTTPResult.success(data))
+                        } else {
+                            completion(HTTPResult.failure(HTTPClientError.invalidData))
+                        }
                     } else {
-                        completion(HTTPResult.failure(HTTPClientError.invalidData))
+                        completion(HTTPResult.failure(HTTPClientError.unexpedStatusCodeError(statusCode: response.statusCode)))
                     }
                 } else {
-                    completion(HTTPResult.failure(HTTPClientError.unexpedStatusCodeError(statusCode: response.statusCode)))
+                    completion(HTTPResult.failure(HTTPClientError.unknownError))
                 }
-            } else {
-                completion(HTTPResult.failure(HTTPClientError.unknownError))
+                print("GET request to \(url) done!")
             }
         }
         

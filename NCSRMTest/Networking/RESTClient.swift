@@ -15,20 +15,20 @@ enum RESTClientResult<Value> {
 
 class RESTClient {
     
+    static let shared = RESTClient()
+    
     func performDataTask<T: Decodable>(with url: String, _ completion: @escaping (RESTClientResult<T>) -> Void) {
         HTTPClient.shared.performDataTask(for: url) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data):
-                    do {
-                        let response = try JSONDecoder().decode(T.self, from: data)
-                        completion(RESTClientResult.success(response))
-                    } catch (let error) {
-                        completion(RESTClientResult.failure(error))
-                    }
-                case .failure:
-                    break
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(T.self, from: data)
+                    completion(RESTClientResult.success(response))
+                } catch (let error) {
+                    completion(RESTClientResult.failure(error))
                 }
+            case .failure:
+                break
             }
         }
     }
