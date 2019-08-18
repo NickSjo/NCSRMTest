@@ -22,6 +22,8 @@ class LocationDetailsViewController: UIViewController, StoryboardInstantiated {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        title = viewModel.title
+        
         viewModel.didUpdate = { [weak self] status in
             self?.updateUI(for: status)
         }

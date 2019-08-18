@@ -10,6 +10,9 @@ import UIKit
 
 class CharacterDetailsViewModel {
     
+    var title: String {
+        return "Character details"
+    }
     var name: String {
         return character.name
     }

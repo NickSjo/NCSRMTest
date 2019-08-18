@@ -15,6 +15,9 @@ enum LocationDetailsViewModelStatus {
 }
 
 class LocationDetailsViewModel {
+    var title: String {
+        return "Location details"
+    }
     var name: String {
         return location.name
     }

@@ -22,6 +22,8 @@ class CharacterDetailsViewController: UIViewController, StoryboardInstantiated {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = viewModel.title
+        
         updateUI()
     }
 
