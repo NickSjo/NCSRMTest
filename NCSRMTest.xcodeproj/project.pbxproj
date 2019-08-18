@@ -32,6 +32,11 @@
 		85E9A06323094C4F00037D19 /* ResidentsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A06223094C4F00037D19 /* ResidentsListViewModel.swift */; };
 		85E9A065230957A500037D19 /* FavoritesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A064230957A500037D19 /* FavoritesCache.swift */; };
 		85E9A0692309617300037D19 /* FavoritesCacheTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A0682309617300037D19 /* FavoritesCacheTest.swift */; };
+		85E9A06C2309ACEB00037D19 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A06B2309ACEB00037D19 /* Labels.swift */; };
+		85E9A06E2309ACF400037D19 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A06D2309ACF400037D19 /* Views.swift */; };
+		85E9A0702309ACFA00037D19 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A06F2309ACFA00037D19 /* Buttons.swift */; };
+		85E9A0722309AE8C00037D19 /* UIColor+NCSRMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A0712309AE8C00037D19 /* UIColor+NCSRMTest.swift */; };
+		85E9A0742309C92900037D19 /* ImageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A0732309C92900037D19 /* ImageViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +79,11 @@
 		85E9A06223094C4F00037D19 /* ResidentsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentsListViewModel.swift; sourceTree = "<group>"; };
 		85E9A064230957A500037D19 /* FavoritesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCache.swift; sourceTree = "<group>"; };
 		85E9A0682309617300037D19 /* FavoritesCacheTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCacheTest.swift; sourceTree = "<group>"; };
+		85E9A06B2309ACEB00037D19 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
+		85E9A06D2309ACF400037D19 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		85E9A06F2309ACFA00037D19 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		85E9A0712309AE8C00037D19 /* UIColor+NCSRMTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+NCSRMTest.swift"; sourceTree = "<group>"; };
+		85E9A0732309C92900037D19 /* ImageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +128,7 @@
 				85E9A0222308369900037D19 /* Model */,
 				85E9A01B23082DA500037D19 /* Networking */,
 				85E9A0462308846B00037D19 /* TableViewCells */,
+				85E9A06A2309ACD700037D19 /* UI */,
 				85E9A0432308826500037D19 /* Utilities */,
 				85E9A03E2308808E00037D19 /* ViewControllers */,
 				85E9A049230884E900037D19 /* ViewModels */,
@@ -199,6 +210,18 @@
 				85E9A06223094C4F00037D19 /* ResidentsListViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		85E9A06A2309ACD700037D19 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				85E9A06B2309ACEB00037D19 /* Labels.swift */,
+				85E9A06D2309ACF400037D19 /* Views.swift */,
+				85E9A06F2309ACFA00037D19 /* Buttons.swift */,
+				85E9A0712309AE8C00037D19 /* UIColor+NCSRMTest.swift */,
+				85E9A0732309C92900037D19 /* ImageViews.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85E9A0702309ACFA00037D19 /* Buttons.swift in Sources */,
 				85E9A0592308B6F100037D19 /* LocationDetailsViewController.swift in Sources */,
 				85E9A04F23088EB200037D19 /* ListViewModel.swift in Sources */,
 				85E9A05123088F9400037D19 /* FavoritesListViewModel.swift in Sources */,
@@ -310,12 +334,16 @@
 				85E9A0452308827700037D19 /* StoryboardInstantiated.swift in Sources */,
 				85E9A024230836AA00037D19 /* Model.swift in Sources */,
 				85E9A0532308A72B00037D19 /* CharacterDetailsViewController.swift in Sources */,
+				85E9A06E2309ACF400037D19 /* Views.swift in Sources */,
 				85E9A065230957A500037D19 /* FavoritesCache.swift in Sources */,
 				85E9A0212308354800037D19 /* RESTClient.swift in Sources */,
 				85E9A06323094C4F00037D19 /* ResidentsListViewModel.swift in Sources */,
+				85E9A0722309AE8C00037D19 /* UIColor+NCSRMTest.swift in Sources */,
 				85E9A05F23093E9700037D19 /* CharacterDetailsViewModel.swift in Sources */,
 				85E9A0482308849400037D19 /* CharacterCell.swift in Sources */,
 				85E9A040230880A900037D19 /* TabBarController.swift in Sources */,
+				85E9A0742309C92900037D19 /* ImageViews.swift in Sources */,
+				85E9A06C2309ACEB00037D19 /* Labels.swift in Sources */,
 				85E99FCD230829FE00037D19 /* AppDelegate.swift in Sources */,
 				85E9A01D23082DB700037D19 /* HTTPClient.swift in Sources */,
 				85E9A0572308AE5800037D19 /* ImageCache.swift in Sources */,
