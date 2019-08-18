@@ -12,13 +12,11 @@ class ListTableViewController: UITableViewController, StoryboardInstantiated {
 
     var viewModel: ListViewModel!
     
-    private var dataSourceSnapshot: [Character] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = UITableView.automaticDimension;
-        tableView.estimatedRowHeight = 61.0;
+        tableView.estimatedRowHeight = 60.0;
         
         if viewModel.allowsRefresh {
             setupRefreshControl()
@@ -73,22 +71,34 @@ extension ListTableViewController { // MARK: Table view delegate
         return editActions
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard viewModel.allowsItemDetails else {
+            return
+        }
+        
+        let character = viewModel.characters[indexPath.row]
+        let vc = CharacterDetailsViewController.instantiate("Main")
+        vc.viewModel = CharacterDetailsViewModel(character)
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
-private extension ListTableViewController {
+private extension ListTableViewController { // MARK: Private
     
-    private func setupRefreshControl() {
+    func setupRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         refreshControl?.tintColor = .black
     }
     
-    @objc private func refreshData() {
+    @objc func refreshData() {
         viewModel.refresh()
         refreshControl?.endRefreshing()
     }
     
-    private func updateTableViewContent(with previousSnapshot: [Character], _ targetSnapshot: [Character], _ hasMorePages: Bool) {
+    func updateTableViewContent(with previousSnapshot: [Character], _ targetSnapshot: [Character], _ hasMorePages: Bool) {
         var deletedItems: [IndexPath] = []
         if targetSnapshot.count < previousSnapshot.count {
             let changes = (targetSnapshot.count..<previousSnapshot.count).map({ IndexPath(row: $0, section: 0) })
