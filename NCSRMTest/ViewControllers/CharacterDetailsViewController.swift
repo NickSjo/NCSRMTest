@@ -15,6 +15,7 @@ class CharacterDetailsViewController: UIViewController, StoryboardInstantiated {
     @IBOutlet private weak var originLabel: UILabel!
     @IBOutlet private weak var locationLabel: UILabel!
     @IBOutlet private weak var favoritesButton: UIButton!
+    @IBOutlet private weak var imageActivityIndicator: UIActivityIndicatorView!
     
     var viewModel: CharacterDetailsViewModel!
     
@@ -48,8 +49,10 @@ private extension CharacterDetailsViewController { // MARK: Private
         originLabel.text = viewModel.originName
         locationLabel.text = viewModel.locationName
         
+        imageActivityIndicator.startAnimating()
         viewModel.loadImage { [weak self] image in
             guard let self = self else { return }
+            self.imageActivityIndicator.stopAnimating()
             UIView.transition(with: self.view, duration: 0.2, options: .transitionCrossDissolve, animations: { [weak self] in
                 self?.imageView.image = image
             }, completion: nil)

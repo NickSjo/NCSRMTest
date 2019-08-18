@@ -19,6 +19,7 @@ class CharactersListViewModel: ListViewModel {
     
     private var info: Info?
     private let baseURL = "https://rickandmortyapi.com/api/character/"
+    private var isLoading: Bool
     
     private var hasMorePages: Bool {
         if let info = info, info.next.count > 0 {
@@ -35,6 +36,7 @@ class CharactersListViewModel: ListViewModel {
         allowsRefresh = true
         title = "Characters"
         characters = []
+        isLoading = false
     }
     
     func load() {
@@ -60,19 +62,33 @@ class CharactersListViewModel: ListViewModel {
 private extension CharactersListViewModel {
     
     func load(with url: String) {
+        guard isLoading == false else {
+            return
+        }
+        
+        isLoading = true
         RESTClient.shared.performDataTask(with: url) { [weak self] (result: RESTClientResult<CharactersResponse>) in
+            self?.isLoading = false
             switch result {
             case .success(let charactersResponse):
                 self?.update(for: url, charactersResponse)
             case .failure:
-                break
+                self?.update(for: url, nil)
             }
         }
     }
     
-    func update(for url: String, _ charactersResponse: CharactersResponse) {
-        info = charactersResponse.info
+    func update(for url: String, _ charactersResponse: CharactersResponse?) {
+        guard let charactersResponse = charactersResponse else {
+            info = nil
+            let prev = characters
+            let target = characters
+            didUpdate?(prev, target, false)
+            
+            return
+        }
         
+        info = charactersResponse.info
         let prev = characters
         
         if url == baseURL {

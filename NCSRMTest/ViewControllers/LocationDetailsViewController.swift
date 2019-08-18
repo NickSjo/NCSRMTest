@@ -14,16 +14,18 @@ class LocationDetailsViewController: UIViewController, StoryboardInstantiated {
     @IBOutlet private weak var typeLabel: UILabel!
     @IBOutlet private weak var dimensionLabel: UILabel!
     @IBOutlet private weak var residentsButton: UIButton!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var scrollView: UIScrollView!
     
     var viewModel: LocationDetailsViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel.load()
-        viewModel.didUpdate = { [weak self] in
-            self?.updateUI()
+    
+        viewModel.didUpdate = { [weak self] status in
+            self?.updateUI(for: status)
         }
+        viewModel.load()
     }
 
 }
@@ -41,10 +43,25 @@ extension LocationDetailsViewController { // MARK: Actions
 
 private extension LocationDetailsViewController { // MARK: Private
     
-    func updateUI() {
-        nameLabel.text = viewModel.name
-        typeLabel.text = viewModel.type
-        dimensionLabel.text = viewModel.dimension
+    func updateUI(for status: LocationDetailsViewModelStatus) {
+        switch status {
+        case .initial, .loading:
+            nameLabel.text = " "
+            typeLabel.text = " "
+            dimensionLabel.text = " "
+            residentsButton.isEnabled = false
+            scrollView.alpha = 0.0
+            activityIndicator.startAnimating()
+        case .loaded(_):
+            nameLabel.text = viewModel.name
+            typeLabel.text = viewModel.type ?? "unknown"
+            dimensionLabel.text = viewModel.dimension ?? "unknown"
+            residentsButton.isEnabled = true
+            scrollView.alpha = 1.0
+            activityIndicator.stopAnimating()
+        }
+        
+
     }
     
 }

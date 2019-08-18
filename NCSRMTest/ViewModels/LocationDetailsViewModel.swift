@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum LocationDetailsViewModelStatus {
+    case initial
+    case loading
+    case loaded(Error?)
+}
+
 class LocationDetailsViewModel {
     var name: String {
         return location.name
@@ -19,24 +25,39 @@ class LocationDetailsViewModel {
         return location.dimension
     }
     
-    var didUpdate: (() -> Void)?
+    var didUpdate: ((LocationDetailsViewModelStatus) -> Void)?
     
     private(set) var location: Location
+    private var status: LocationDetailsViewModelStatus
     
     init(_ location: Location) {
         self.location = location
+        self.status = .initial
     }
     
     func load() {
+        status = .loading
+        notifyObserver()
+        
         RESTClient.shared.performDataTask(with: location.url) { [weak self] (result: RESTClientResult<Location>) in
             switch result {
             case .success(let location):
+                self?.status = .loaded(nil)
                 self?.location = location
-                self?.didUpdate?()
-            case .failure:
-                break
+                self?.notifyObserver()
+            case .failure(let error):
+                self?.status = .loaded(error)
+                self?.notifyObserver()
             }
         }
     }
 
+}
+
+private extension LocationDetailsViewModel {
+    
+    func notifyObserver() {
+        didUpdate?(status)
+    }
+    
 }

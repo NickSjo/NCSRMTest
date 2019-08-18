@@ -88,12 +88,29 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MYK-mZ-UeI">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="672.5"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z6K-yU-Z42">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MG7-t0-Osn">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                                        <subviews>
+                                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xlg-k2-n0Z">
+                                                                <rect key="frame" x="197" y="197" width="20" height="20"/>
+                                                            </activityIndicatorView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z6K-yU-Z42">
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="z6K-yU-Z42" secondAttribute="height" multiplier="1:1" id="3BH-co-KTv"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="z6K-yU-Z42" secondAttribute="height" multiplier="1:1" id="3BH-co-KTv"/>
+                                                            <constraint firstAttribute="trailing" secondItem="z6K-yU-Z42" secondAttribute="trailing" id="7yd-Cb-6FN"/>
+                                                            <constraint firstItem="z6K-yU-Z42" firstAttribute="leading" secondItem="MG7-t0-Osn" secondAttribute="leading" id="90q-eS-2hn"/>
+                                                            <constraint firstItem="xlg-k2-n0Z" firstAttribute="centerY" secondItem="MG7-t0-Osn" secondAttribute="centerY" id="DDt-EI-RQu"/>
+                                                            <constraint firstItem="xlg-k2-n0Z" firstAttribute="centerX" secondItem="MG7-t0-Osn" secondAttribute="centerX" id="HCw-Lp-I5T"/>
+                                                            <constraint firstAttribute="bottom" secondItem="z6K-yU-Z42" secondAttribute="bottom" id="Xc2-EW-F7f"/>
+                                                            <constraint firstItem="z6K-yU-Z42" firstAttribute="top" secondItem="MG7-t0-Osn" secondAttribute="top" id="vur-T1-pbl"/>
                                                         </constraints>
-                                                    </imageView>
+                                                    </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8N-J7-bQW">
                                                         <rect key="frame" x="0.0" y="422" width="414" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -194,6 +211,7 @@
                     </view>
                     <connections>
                         <outlet property="favoritesButton" destination="iwu-Jv-tet" id="JUM-i1-ZdJ"/>
+                        <outlet property="imageActivityIndicator" destination="xlg-k2-n0Z" id="0NG-xy-0QP"/>
                         <outlet property="imageView" destination="z6K-yU-Z42" id="jfi-FP-TbW"/>
                         <outlet property="locationLabel" destination="y77-UX-RGU" id="UWG-AT-OJk"/>
                         <outlet property="nameLabel" destination="Q8N-J7-bQW" id="G3G-KO-W04"/>
@@ -304,20 +322,27 @@
                                     <constraint firstItem="yJc-99-RXM" firstAttribute="width" secondItem="vNd-Ou-CYa" secondAttribute="width" id="iRT-6G-XMG"/>
                                 </constraints>
                             </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jNg-cA-p4L">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NjL-sD-Ssl" firstAttribute="trailing" secondItem="vNd-Ou-CYa" secondAttribute="trailing" id="424-vi-ahc"/>
+                            <constraint firstItem="jNg-cA-p4L" firstAttribute="centerY" secondItem="wfC-xF-rcT" secondAttribute="centerY" id="aZL-Zl-8Kg"/>
                             <constraint firstItem="NjL-sD-Ssl" firstAttribute="bottom" secondItem="vNd-Ou-CYa" secondAttribute="bottom" id="dSQ-Er-WxD"/>
                             <constraint firstItem="vNd-Ou-CYa" firstAttribute="top" secondItem="NjL-sD-Ssl" secondAttribute="top" id="fJj-EE-ToM"/>
                             <constraint firstItem="vNd-Ou-CYa" firstAttribute="leading" secondItem="NjL-sD-Ssl" secondAttribute="leading" id="lz8-9o-c0n"/>
+                            <constraint firstItem="jNg-cA-p4L" firstAttribute="centerX" secondItem="wfC-xF-rcT" secondAttribute="centerX" id="tCR-Ub-dzT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NjL-sD-Ssl"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="jNg-cA-p4L" id="lcy-O7-8qL"/>
                         <outlet property="dimensionLabel" destination="Fvb-nw-51e" id="fje-au-rji"/>
                         <outlet property="nameLabel" destination="eQ9-Zh-hyc" id="uC7-Of-Wf0"/>
                         <outlet property="residentsButton" destination="LXq-gR-Qm8" id="7sc-Om-1wk"/>
+                        <outlet property="scrollView" destination="vNd-Ou-CYa" id="vKX-Kp-g4U"/>
                         <outlet property="typeLabel" destination="1gp-i6-P6l" id="lID-TH-d7d"/>
                     </connections>
                 </viewController>
