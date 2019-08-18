@@ -12,7 +12,7 @@ import UIKit
 class ImageCache {
     static let shared = ImageCache()
     
-    var images: [String: UIImage]
+    private(set) var images: [String: UIImage]
     
     init() {
         images = [:]
