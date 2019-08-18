@@ -19,8 +19,9 @@ class ListTableViewController: UITableViewController, StoryboardInstantiated {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.backgroundColor = .backgroundColor
         tableView.rowHeight = UITableView.automaticDimension;
-        tableView.estimatedRowHeight = 60.0;
+        tableView.estimatedRowHeight = 65.0;
         
         title = viewModel.title
         
@@ -68,6 +69,7 @@ extension ListTableViewController { // MARK: Table view delegate
             let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] (action, indexPath) in
                 self?.viewModel.delete(for: indexPath)
             }
+            deleteAction.backgroundColor = .warningColor
             editActions.append(deleteAction)
         }
         
@@ -93,12 +95,11 @@ private extension ListTableViewController { // MARK: Private
     func setupRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        refreshControl?.tintColor = .black
+        refreshControl?.tintColor = .white
     }
     
     @objc func refreshData() {
         viewModel.refresh()
-        refreshControl?.endRefreshing()
     }
     
     func updateTableViewContent(_ error: Error?, _ hasMorePages: Bool) {
@@ -135,7 +136,15 @@ private extension ListTableViewController { // MARK: Private
             }
         }
         
-        tableView.reloadData()
+        if tableView.refreshControl?.isRefreshing ?? false {
+            DispatchQueue.main.async { [weak self] in
+                self?.refreshControl?.endRefreshing()
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.tableView.reloadData()
+        }
     }
     
 }
