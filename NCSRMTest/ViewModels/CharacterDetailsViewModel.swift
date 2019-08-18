@@ -23,7 +23,7 @@ class CharacterDetailsViewModel {
         return character.location
     }
     
-    private var character: Character
+    private(set) var character: Character
     
     init(_ character: Character) {
         self.character = character
@@ -33,6 +33,10 @@ class CharacterDetailsViewModel {
         ImageCache.shared.image(for: character.image) { image in
             completion(image)
         }
+    }
+    
+    func addToFavorites() {
+        FavoritesCache.shared.add(character)
     }
     
 }

@@ -18,6 +18,8 @@ class ListTableViewController: UITableViewController, StoryboardInstantiated {
         tableView.rowHeight = UITableView.automaticDimension;
         tableView.estimatedRowHeight = 60.0;
         
+        title = viewModel.title
+        
         if viewModel.allowsRefresh {
             setupRefreshControl()
         }
@@ -44,6 +46,8 @@ extension ListTableViewController { // MARK: Table view data source
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell", for: indexPath) as! CharacterCell
         cell.nameLabel.text = viewModel.characters[indexPath.row].name
+        cell.selectionStyle = viewModel.allowsItemDetails ? UITableViewCell.SelectionStyle.default : UITableViewCell.SelectionStyle.none
+        cell.accessoryType = viewModel.allowsItemDetails ? UITableViewCell.AccessoryType.disclosureIndicator : UITableViewCell.AccessoryType.none
         
         if viewModel.allowsPagination, indexPath.row == viewModel.characters.count - 1 {
             viewModel.loadNextPage()
@@ -60,10 +64,7 @@ extension ListTableViewController { // MARK: Table view delegate
         
         if viewModel.allowsDeletion {
             let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] (action, indexPath) in
-                self?.viewModel.characters.remove(at: indexPath.row)
-                self?.tableView.beginUpdates()
-                self?.tableView.deleteRows(at: [indexPath], with: .automatic)
-                self?.tableView.endUpdates()
+                self?.viewModel.delete(for: indexPath)
             }
             editActions.append(deleteAction)
         }
@@ -99,23 +100,24 @@ private extension ListTableViewController { // MARK: Private
     }
     
     func updateTableViewContent(with previousSnapshot: [Character], _ targetSnapshot: [Character], _ hasMorePages: Bool) {
-        var deletedItems: [IndexPath] = []
-        if targetSnapshot.count < previousSnapshot.count {
-            let changes = (targetSnapshot.count..<previousSnapshot.count).map({ IndexPath(row: $0, section: 0) })
-            deletedItems.append(contentsOf: changes)
-        }
-
-        var insertedItems: [IndexPath] = []
-        if targetSnapshot.count > previousSnapshot.count {
-            let changes = (previousSnapshot.count..<targetSnapshot.count).map({ IndexPath(row: $0, section: 0) })
-            insertedItems.append(contentsOf: changes)
-        }
+//        var deletedItems: [IndexPath] = []
+//        if targetSnapshot.count < previousSnapshot.count {
+//            let changes = (targetSnapshot.count..<previousSnapshot.count).map({ IndexPath(row: $0, section: 0) })
+//            deletedItems.append(contentsOf: changes)
+//        }
+//
+//        var insertedItems: [IndexPath] = []
+//        if targetSnapshot.count > previousSnapshot.count {
+//            let changes = (previousSnapshot.count..<targetSnapshot.count).map({ IndexPath(row: $0, section: 0) })
+//            insertedItems.append(contentsOf: changes)
+//        }
+//
+//        tableView.beginUpdates()
+//        tableView.insertRows(at: insertedItems, with: .none)
+//        tableView.deleteRows(at: deletedItems, with: .none)
+//        tableView.endUpdates()
         
-        tableView.beginUpdates()
-        tableView.insertRows(at: insertedItems, with: .none)
-        tableView.deleteRows(at: deletedItems, with: .none)
-        tableView.endUpdates()
-        
+        tableView.reloadData()
         tableView.tableFooterView?.isHidden = (hasMorePages == false)
     }
     

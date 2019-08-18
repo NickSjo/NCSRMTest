@@ -30,6 +30,8 @@
 		85E9A05F23093E9700037D19 /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A05E23093E9700037D19 /* CharacterDetailsViewModel.swift */; };
 		85E9A0612309444400037D19 /* LocationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A0602309444400037D19 /* LocationDetailsViewModel.swift */; };
 		85E9A06323094C4F00037D19 /* ResidentsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A06223094C4F00037D19 /* ResidentsListViewModel.swift */; };
+		85E9A065230957A500037D19 /* FavoritesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A064230957A500037D19 /* FavoritesCache.swift */; };
+		85E9A0692309617300037D19 /* FavoritesCacheTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9A0682309617300037D19 /* FavoritesCacheTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		85E9A05E23093E9700037D19 /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
 		85E9A0602309444400037D19 /* LocationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewModel.swift; sourceTree = "<group>"; };
 		85E9A06223094C4F00037D19 /* ResidentsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentsListViewModel.swift; sourceTree = "<group>"; };
+		85E9A064230957A500037D19 /* FavoritesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCache.swift; sourceTree = "<group>"; };
+		85E9A0682309617300037D19 /* FavoritesCacheTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCacheTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,9 +133,10 @@
 		85E99FE0230829FF00037D19 /* NCSRMTestTests */ = {
 			isa = PBXGroup;
 			children = (
+				85E9A0682309617300037D19 /* FavoritesCacheTest.swift */,
 				85E9A01E230832E400037D19 /* HTTPClientTests.swift */,
-				85E9A0272308376300037D19 /* RESTClientTests.swift */,
 				85E9A05C23093A8F00037D19 /* ImageCacheTests.swift */,
+				85E9A0272308376300037D19 /* RESTClientTests.swift */,
 				85E99FE3230829FF00037D19 /* Info.plist */,
 			);
 			path = NCSRMTestTests;
@@ -168,8 +173,9 @@
 		85E9A0432308826500037D19 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				85E9A0442308827700037D19 /* StoryboardInstantiated.swift */,
+				85E9A064230957A500037D19 /* FavoritesCache.swift */,
 				85E9A0562308AE5800037D19 /* ImageCache.swift */,
+				85E9A0442308827700037D19 /* StoryboardInstantiated.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -304,6 +310,7 @@
 				85E9A0452308827700037D19 /* StoryboardInstantiated.swift in Sources */,
 				85E9A024230836AA00037D19 /* Model.swift in Sources */,
 				85E9A0532308A72B00037D19 /* CharacterDetailsViewController.swift in Sources */,
+				85E9A065230957A500037D19 /* FavoritesCache.swift in Sources */,
 				85E9A0212308354800037D19 /* RESTClient.swift in Sources */,
 				85E9A06323094C4F00037D19 /* ResidentsListViewModel.swift in Sources */,
 				85E9A05F23093E9700037D19 /* CharacterDetailsViewModel.swift in Sources */,
@@ -322,6 +329,7 @@
 			files = (
 				85E9A0282308376300037D19 /* RESTClientTests.swift in Sources */,
 				85E9A05D23093A8F00037D19 /* ImageCacheTests.swift in Sources */,
+				85E9A0692309617300037D19 /* FavoritesCacheTest.swift in Sources */,
 				85E9A01F230832E400037D19 /* HTTPClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

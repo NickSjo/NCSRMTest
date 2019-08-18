@@ -36,7 +36,7 @@ extension CharacterDetailsViewController { // MARK: Actions
     }
     
     @IBAction func addToFavoritesAction(_ sender: Any) {
-        
+        viewModel.addToFavorites()
     }
     
 }
