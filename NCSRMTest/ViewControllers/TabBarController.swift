@@ -30,8 +30,8 @@ private extension TabBarController {
         viewController2.viewModel = FavoritesListViewModel()
         let navController2 = UINavigationController(rootViewController: viewController2)
         navController2.tabBarItem = UITabBarItem(title: "Favorites", image: nil, tag: 1)
-        
-        viewControllers = [navController1, navController2]
+
+        setViewControllers([navController1, navController2], animated: true)
     }
     
 }
