@@ -13,7 +13,7 @@ class LocationDetailsViewController: UIViewController, StoryboardInstantiated {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var typeLabel: UILabel!
     @IBOutlet private weak var dimensionLabel: UILabel!
-    @IBOutlet weak var residentsButton: UIButton!
+    @IBOutlet private weak var residentsButton: UIButton!
     
     var viewModel: LocationDetailsViewModel!
     
@@ -31,7 +31,10 @@ class LocationDetailsViewController: UIViewController, StoryboardInstantiated {
 extension LocationDetailsViewController { // MARK: Actions
     
     @IBAction func showResidentsAction(_ sender: Any) {
+        let vc = ListTableViewController.instantiate("Main")
+        vc.viewModel = ResidentsListViewModel(viewModel.location)
         
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

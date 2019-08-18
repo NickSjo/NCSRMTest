@@ -21,7 +21,7 @@ class LocationDetailsViewModel {
     
     var didUpdate: (() -> Void)?
     
-    private var location: Location
+    private(set) var location: Location
     
     init(_ location: Location) {
         self.location = location

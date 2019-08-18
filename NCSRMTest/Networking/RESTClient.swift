@@ -27,8 +27,8 @@ class RESTClient {
                 } catch (let error) {
                     completion(RESTClientResult.failure(error))
                 }
-            case .failure:
-                break
+            case .failure(let error):
+                completion(RESTClientResult.failure(error))
             }
         }
     }
