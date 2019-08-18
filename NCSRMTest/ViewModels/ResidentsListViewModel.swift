@@ -14,10 +14,16 @@ class ResidentsListViewModel: ListViewModel {
     var allowsItemDetails: Bool
     var allowsPagination: Bool
     var allowsRefresh: Bool
+    var emptyMessage: String
+    var errorMessage: String
     var title: String
-    var didUpdate: (([Character], [Character], Bool) -> Void)?
-    var characters: [Character]
+    var didUpdate: ((Error?, Bool) -> Void)?
     
+    var numberOfItems: Int {
+        return characters.count
+    }
+    
+    private var characters: [Character]
     private var location: Location
     private let baseURL = "https://rickandmortyapi.com/api/character/"
     private var residentIDs: [String] {
@@ -33,6 +39,8 @@ class ResidentsListViewModel: ListViewModel {
         allowsItemDetails = true
         allowsPagination = false
         allowsRefresh = false
+        emptyMessage = "No residents"
+        errorMessage = "Error. Could not fetch residents"
         title = "Residents"
         characters = []
         
@@ -40,18 +48,14 @@ class ResidentsListViewModel: ListViewModel {
     }
     
     func load() {
-        guard residentIDs.count > 0 else {
-            update([])
-            return
-        }
-        
         let url = baseURL.appending("[\(residentIDs.joined(separator: ","))]")
         RESTClient.shared.performDataTask(with: url) { [weak self] (result: RESTClientResult<[Character]>) in
             switch result {
             case .success(let characters):
-                self?.update(characters)
-            case .failure:
-                break
+                self?.characters = characters
+                self?.didUpdate?(nil, false)
+            case .failure(let error):
+                self?.didUpdate?(error, false)
             }
         }
     }
@@ -68,16 +72,13 @@ class ResidentsListViewModel: ListViewModel {
         // Not supported
     }
     
-}
-
-private extension ResidentsListViewModel {
+    func character(for indexPath: IndexPath) -> Character {
+        return characters[indexPath.row]
+    }
     
-    func update(_ response: [Character]) {
-        let prev = characters
-        characters = response
-        let target = characters
-        
-        didUpdate?(prev, target, false)
+    func characterName(for indexPath: IndexPath) -> String {
+        return characters[indexPath.row].name
     }
     
 }
+

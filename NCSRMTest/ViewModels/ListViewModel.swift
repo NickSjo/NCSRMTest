@@ -13,12 +13,16 @@ protocol ListViewModel {
     func loadNextPage()
     func refresh()
     func delete(for indexPath: IndexPath)
+    func character(for indexPath: IndexPath) -> Character
+    func characterName(for indexPath: IndexPath) -> String
     
     var allowsDeletion: Bool { get }
     var allowsItemDetails: Bool { get }
     var allowsPagination: Bool { get }
     var allowsRefresh: Bool { get }
     var title: String { get }
-    var didUpdate: ((_ previousSnapshot: [Character], _ targetSnapshot: [Character], _ hasMorePages: Bool) -> Void)? { get set }
-    var characters: [Character] { get }
+    var emptyMessage: String { get }
+    var errorMessage: String { get }
+    var didUpdate: ((Error?, _ hasMorePages: Bool) -> Void)? { get set }
+    var numberOfItems: Int { get }
 }

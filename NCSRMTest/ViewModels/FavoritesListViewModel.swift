@@ -14,9 +14,16 @@ class FavoritesListViewModel: ListViewModel {
     var allowsItemDetails: Bool
     var allowsPagination: Bool
     var allowsRefresh: Bool
+    var emptyMessage: String
+    var errorMessage: String
     var title: String
-    var didUpdate: (([Character], [Character], Bool) -> Void)?
-    var characters: [Character]
+    var didUpdate: ((Error?, Bool) -> Void)?
+    
+    var numberOfItems: Int {
+        return characters.count
+    }
+    
+    private var characters: [Character]
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: .favoritesDidChange, object: nil)
@@ -27,6 +34,8 @@ class FavoritesListViewModel: ListViewModel {
         allowsItemDetails = false
         allowsPagination = false
         allowsRefresh = false
+        emptyMessage = "No favorites"
+        errorMessage = "Error. Could not fetch favorites"
         title = "Favorites"
         characters = []
         
@@ -35,10 +44,8 @@ class FavoritesListViewModel: ListViewModel {
     }
     
     func load() {
-        let prev = characters
         characters = FavoritesCache.shared.orderedFavorites
-        let target = characters
-        didUpdate?(prev, target, false)
+        didUpdate?(nil, false)
     }
     
     func loadNextPage() {
@@ -52,6 +59,14 @@ class FavoritesListViewModel: ListViewModel {
     func delete(for indexPath: IndexPath) {
         let character = characters[indexPath.row]
         FavoritesCache.shared.remove(character)
+    }
+    
+    func character(for indexPath: IndexPath) -> Character {
+        return characters[indexPath.row]
+    }
+    
+    func characterName(for indexPath: IndexPath) -> String {
+        return characters[indexPath.row].name
     }
     
 }
