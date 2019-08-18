@@ -58,7 +58,7 @@ class CharactersListViewModel: ListViewModel {
 private extension CharactersListViewModel {
     
     func load(with url: String) {
-        RESTClient().performDataTask(with: url) { [weak self] (result: RESTClientResult<CharactersResponse>) in
+        RESTClient.shared.performDataTask(with: url) { [weak self] (result: RESTClientResult<CharactersResponse>) in
             switch result {
             case .success(let charactersResponse):
                 self?.update(for: url, charactersResponse)
