@@ -19,6 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = TabBarController()
         window?.makeKeyAndVisible()
         
+        let navBarApperance = UINavigationBar.appearance()
+        navBarApperance.barTintColor = .backgroundColor
+        navBarApperance.tintColor = .textColor
+        navBarApperance.titleTextAttributes = [.foregroundColor: UIColor.textColor]
+        
+        let tarbBarAppearance = UITabBar.appearance()
+        tarbBarAppearance.barTintColor = .backgroundColor
+        tarbBarAppearance.tintColor = .textColor
+        
         return true
     }
 
