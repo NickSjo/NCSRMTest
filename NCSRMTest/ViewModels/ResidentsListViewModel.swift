@@ -14,6 +14,7 @@ class ResidentsListViewModel: ListViewModel {
     var allowsItemDetails: Bool
     var allowsPagination: Bool
     var allowsRefresh: Bool
+    var title: String
     var didUpdate: (([Character], [Character], Bool) -> Void)?
     var characters: [Character]
     
@@ -32,6 +33,7 @@ class ResidentsListViewModel: ListViewModel {
         allowsItemDetails = true
         allowsPagination = false
         allowsRefresh = false
+        title = "Residents"
         characters = []
         
         self.location = location
@@ -62,7 +64,7 @@ class ResidentsListViewModel: ListViewModel {
         //  Not supported
     }
     
-    func delete() {
+    func delete(for indexPath: IndexPath) {
         // Not supported
     }
     

@@ -13,6 +13,7 @@ class CharactersListViewModel: ListViewModel {
     var allowsItemDetails: Bool
     var allowsPagination: Bool
     var allowsRefresh: Bool
+    var title: String
     var characters: [Character]
     var didUpdate: (([Character], [Character], Bool) -> Void)?
     
@@ -32,6 +33,7 @@ class CharactersListViewModel: ListViewModel {
         allowsItemDetails = true
         allowsPagination = true
         allowsRefresh = true
+        title = "Characters"
         characters = []
     }
     
@@ -50,7 +52,7 @@ class CharactersListViewModel: ListViewModel {
         load()
     }
     
-    func delete() {
+    func delete(for indexPath: IndexPath) {
         // Not supported
     }
 }
