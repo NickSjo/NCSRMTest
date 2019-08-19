@@ -31,7 +31,7 @@ class FavoritesListViewModel: ListViewModel {
     
     init() {
         allowsDeletion = true
-        allowsItemDetails = false
+        allowsItemDetails = true
         allowsPagination = false
         allowsRefresh = false
         emptyMessage = "No favorites"
