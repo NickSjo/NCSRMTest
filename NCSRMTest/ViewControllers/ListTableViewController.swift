@@ -104,23 +104,6 @@ private extension ListTableViewController { // MARK: Private
     }
     
     func updateTableViewContent(_ error: Error?, _ hasMorePages: Bool) {
-//        var deletedItems: [IndexPath] = []
-//        if targetSnapshot.count < previousSnapshot.count {
-//            let changes = (targetSnapshot.count..<previousSnapshot.count).map({ IndexPath(row: $0, section: 0) })
-//            deletedItems.append(contentsOf: changes)
-//        }
-//
-//        var insertedItems: [IndexPath] = []
-//        if targetSnapshot.count > previousSnapshot.count {
-//            let changes = (previousSnapshot.count..<targetSnapshot.count).map({ IndexPath(row: $0, section: 0) })
-//            insertedItems.append(contentsOf: changes)
-//        }
-//
-//        tableView.beginUpdates()
-//        tableView.insertRows(at: insertedItems, with: .none)
-//        tableView.deleteRows(at: deletedItems, with: .none)
-//        tableView.endUpdates()
-        
         if let _ = error {
             tableFooterActivityIndicator.stopAnimating()
             tableFooterMessageLabel.text = viewModel.errorMessage
