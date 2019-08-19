@@ -26,6 +26,7 @@ class ResidentsListViewModel: ListViewModel {
     private var characters: [Character]
     private var location: Location
     private let baseURL = "https://rickandmortyapi.com/api/character/"
+    private var isLoading: Bool
     private var residentIDs: [String] {
         guard let residents = location.residents else {
             return []
@@ -38,18 +39,27 @@ class ResidentsListViewModel: ListViewModel {
         allowsDeletion = false
         allowsItemDetails = true
         allowsPagination = false
-        allowsRefresh = false
+        allowsRefresh = true
         emptyMessage = "No residents"
         errorMessage = "Error. Could not fetch residents"
         title = "Residents"
         characters = []
+        isLoading = false
         
         self.location = location
     }
     
     func load() {
+        guard isLoading == false else {
+            return
+        }
+        
+        isLoading = true
+        
         let url = baseURL.appending("[\(residentIDs.joined(separator: ","))]")
         RESTClient.shared.performDataTask(with: url) { [weak self] (result: RESTClientResult<[Character]>) in
+            self?.isLoading = false
+            
             switch result {
             case .success(let characters):
                 self?.characters = characters
@@ -65,7 +75,7 @@ class ResidentsListViewModel: ListViewModel {
     }
     
     func refresh() {
-        //  Not supported
+        load()
     }
     
     func delete(for indexPath: IndexPath) {
