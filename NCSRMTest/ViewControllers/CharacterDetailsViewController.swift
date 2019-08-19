@@ -24,8 +24,7 @@ class CharacterDetailsViewController: UIViewController, StoryboardInstantiated {
         super.viewDidLoad()
 
         title = viewModel.title
-        
-        let button = UIButton(type: .system)
+        let button = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 44.0, height: 44.0))
         button.addTarget(self, action: #selector(handleFavoriteTap), for: .touchUpInside)
         barButtonItem = UIBarButtonItem(customView: button)
         
