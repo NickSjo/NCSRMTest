@@ -14,19 +14,31 @@ class CharacterDetailsViewController: UIViewController, StoryboardInstantiated {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var originLabel: UILabel!
     @IBOutlet private weak var locationLabel: UILabel!
-    @IBOutlet private weak var favoritesButton: UIButton!
     @IBOutlet private weak var imageActivityIndicator: UIActivityIndicatorView!
     
     var viewModel: CharacterDetailsViewModel!
+    
+    private var barButtonItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = viewModel.title
         
+        let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(handleFavoriteTap), for: .touchUpInside)
+        barButtonItem = UIBarButtonItem(customView: button)
+        
         updateUI()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateFavoriteImage()
+        navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
 }
 
 extension CharacterDetailsViewController { // MARK: Actions
@@ -38,13 +50,23 @@ extension CharacterDetailsViewController { // MARK: Actions
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func addToFavoritesAction(_ sender: Any) {
-        viewModel.addToFavorites()
-    }
-    
 }
 
 private extension CharacterDetailsViewController { // MARK: Private
+    
+    @objc func handleFavoriteTap() {
+        viewModel.addOrRemoveFavorite()
+        
+        barButtonItem.customView?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.barButtonItem.customView?.transform = .identity
+            self?.updateFavoriteImage()
+        }
+    }
+    
+    func updateFavoriteImage() {
+        (barButtonItem.customView as? UIButton)?.setImage(viewModel.favoriteImage, for: .normal)
+    }
     
     func updateUI() {
         nameLabel.text = viewModel.name

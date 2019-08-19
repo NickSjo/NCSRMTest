@@ -25,6 +25,13 @@ class CharacterDetailsViewModel {
     var location: Location {
         return character.location
     }
+    var favoriteImage: UIImage? {
+        return isFavorite ? UIImage(named: "icons8-star_yellow") : UIImage(named: "icons8-star_gray")
+    }
+    
+    private var isFavorite: Bool {
+        return FavoritesCache.shared.isFavorite(character)
+    }
     
     private(set) var character: Character
     
@@ -39,8 +46,12 @@ class CharacterDetailsViewModel {
         }
     }
     
-    func addToFavorites() {
-        FavoritesCache.shared.add(character)
+    func addOrRemoveFavorite() {
+        if isFavorite {
+            FavoritesCache.shared.remove(character)
+        } else {
+            FavoritesCache.shared.add(character)
+        }
     }
     
 }

@@ -46,6 +46,10 @@ class FavoritesCache {
         return  false
     }
     
+    func isFavorite(_ character: Character) -> Bool {
+        return favorites.contains(character)
+    }
+    
     func reset() {
         favorites.removeAll()
         NotificationCenter.default.post(Notification(name: .favoritesDidChange))

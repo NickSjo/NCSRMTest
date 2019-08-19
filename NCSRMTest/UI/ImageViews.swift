@@ -26,6 +26,11 @@ class ImageView: UIImageView {
         configure()
     }
     
+    override init(image: UIImage?) {
+        super.init(image: image)
+        configure()
+    }
+    
     func configure() {
         // Override
     }
@@ -44,5 +49,13 @@ class RoundedImageView: ImageView {
         layer.shadowOpacity = 0.4
         layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
         layer.shadowRadius = 4.0
+    }
+}
+
+class TintedImageView: ImageView {
+    override func configure() {
+        super.configure()
+        
+        tintColor = .textColor
     }
 }

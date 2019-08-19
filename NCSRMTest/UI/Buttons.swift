@@ -54,3 +54,13 @@ class DefaultButton: Button {
     }
     
 }
+
+class HighlightButton: Button {
+    
+    override var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? .cellSelectionBackgroundColor : .clear
+        }
+    }
+    
+}

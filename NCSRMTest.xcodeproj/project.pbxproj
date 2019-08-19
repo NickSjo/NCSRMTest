@@ -215,11 +215,11 @@
 		85E9A06A2309ACD700037D19 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				85E9A06F2309ACFA00037D19 /* Buttons.swift */,
+				85E9A0732309C92900037D19 /* ImageViews.swift */,
 				85E9A06B2309ACEB00037D19 /* Labels.swift */,
 				85E9A06D2309ACF400037D19 /* Views.swift */,
-				85E9A06F2309ACFA00037D19 /* Buttons.swift */,
 				85E9A0712309AE8C00037D19 /* UIColor+NCSRMTest.swift */,
-				85E9A0732309C92900037D19 /* ImageViews.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -513,6 +513,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R4ZW7DMR94;
 				INFOPLIST_FILE = NCSRMTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -530,6 +531,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R4ZW7DMR94;
 				INFOPLIST_FILE = NCSRMTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
