@@ -25,6 +25,7 @@ class FavoritesCache {
         favorites = []
     }
     
+    @discardableResult
     func add(_ character: Character) -> (Bool, Character) {
         let result = favorites.insert(character)
         
@@ -35,6 +36,7 @@ class FavoritesCache {
         return result
     }
     
+    @discardableResult
     func remove(_ character: Character) -> Bool {
         let removed = favorites.remove(character)
         

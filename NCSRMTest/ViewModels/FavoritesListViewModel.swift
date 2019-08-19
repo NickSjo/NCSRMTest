@@ -39,7 +39,6 @@ class FavoritesListViewModel: ListViewModel {
         title = "Favorites"
         characters = []
         
-        // Observer changes in favorites cache
         NotificationCenter.default.addObserver(self, selector: #selector(handleUpdate), name: .favoritesDidChange, object: nil)
     }
     

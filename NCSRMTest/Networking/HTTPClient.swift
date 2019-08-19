@@ -45,7 +45,6 @@ class HTTPClient {
         
         let urlRequest = URLRequest(url: url)
         
-        print("GET request to \(url)")
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
             DispatchQueue.main.async {
                 if let error = error {
@@ -63,7 +62,6 @@ class HTTPClient {
                 } else {
                     completion(HTTPResult.failure(HTTPClientError.unknownError))
                 }
-                print("GET request to \(url) done!")
             }
         }
         
