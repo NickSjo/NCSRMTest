@@ -51,6 +51,7 @@ extension ListTableViewController { // MARK: Table view data source
         cell.nameLabel.text = viewModel.characterName(for: indexPath)
         cell.selectionStyle = viewModel.allowsItemDetails ? UITableViewCell.SelectionStyle.default : UITableViewCell.SelectionStyle.none
         cell.accessoryType = viewModel.allowsItemDetails ? UITableViewCell.AccessoryType.disclosureIndicator : UITableViewCell.AccessoryType.none
+        cell.accessoryView = TintedImageView(image: UIImage(named: "ico_arrow"))
         
         if viewModel.allowsPagination, indexPath.row == viewModel.numberOfItems - 1 {
             viewModel.loadNextPage()
