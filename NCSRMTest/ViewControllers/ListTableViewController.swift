@@ -104,19 +104,21 @@ private extension ListTableViewController { // MARK: Private
     }
     
     func updateTableViewContent(_ error: Error?, _ hasMorePages: Bool) {
+        var footerVisibile = false
+        
         if let _ = error {
             tableFooterActivityIndicator.stopAnimating()
             tableFooterMessageLabel.text = viewModel.errorMessage
-            tableView.tableFooterView?.isHidden = false
+            footerVisibile = true
         } else {
             if viewModel.numberOfItems == 0 {
                 tableFooterActivityIndicator.stopAnimating()
                 tableFooterMessageLabel.text = viewModel.emptyMessage
-                tableView.tableFooterView?.isHidden = false
+                footerVisibile = true
             } else {
                 tableFooterActivityIndicator.startAnimating()
                 tableFooterMessageLabel.text = nil
-                tableView.tableFooterView?.isHidden = (hasMorePages == false)
+                footerVisibile = (hasMorePages == true)
             }
         }
         
@@ -126,8 +128,15 @@ private extension ListTableViewController { // MARK: Private
             }
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.tableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            self?.tableView.reloadData()
+            self?.updateFooterViewVisibility(footerVisibile)
+        }
+    }
+    
+    func updateFooterViewVisibility(_ visible: Bool) {
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            self?.tableView.tableFooterView?.alpha = visible ? 1.0 : 0.0
         }
     }
     
