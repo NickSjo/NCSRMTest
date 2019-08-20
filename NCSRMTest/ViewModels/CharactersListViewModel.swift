@@ -83,13 +83,13 @@ private extension CharactersListViewModel {
         }
         
         isLoading = true
-        RESTClient.shared.performDataTask(with: url) { [weak self] (result: RESTClientResult<CharactersResponse>) in
+        JSONClient.shared.performDataTask(with: url) { [weak self] (result: JSONClientResult<CharactersResponse>) in
             self?.isLoading = false
             self?.update(for: url, result)
         }
     }
     
-    func update(for url: String, _ result: RESTClientResult<CharactersResponse>) {
+    func update(for url: String, _ result: JSONClientResult<CharactersResponse>) {
         switch result {
         case .success(let charactersResponse):
             info = charactersResponse.info

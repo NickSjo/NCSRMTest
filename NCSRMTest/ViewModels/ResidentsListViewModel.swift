@@ -57,7 +57,7 @@ class ResidentsListViewModel: ListViewModel {
         isLoading = true
         
         let url = baseURL.appending("[\(residentIDs.joined(separator: ","))]")
-        RESTClient.shared.performDataTask(with: url) { [weak self] (result: RESTClientResult<[Character]>) in
+        JSONClient.shared.performDataTask(with: url) { [weak self] (result: JSONClientResult<[Character]>) in
             self?.isLoading = false
             
             switch result {

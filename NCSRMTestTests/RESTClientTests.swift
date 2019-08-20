@@ -11,16 +11,16 @@ import XCTest
 
 class RESTClientTests: XCTestCase {
 
-    var restClient: RESTClient!
+    var jsonClient: JSONClient!
     
     override func setUp() {
-        restClient = RESTClient()
+        jsonClient = JSONClient()
     }
 
     func testGetAndParseCharactersResponse() {
         let e = expectation(description: "Test get characters")
         
-        restClient.performDataTask(with: "https://rickandmortyapi.com/api/character/") { (result: RESTClientResult<CharactersResponse>) in
+        jsonClient.performDataTask(with: "https://rickandmortyapi.com/api/character/") { (result: JSONClientResult<CharactersResponse>) in
             switch result {
             case .success(let response):
                 XCTAssert(response.results.count > 0)

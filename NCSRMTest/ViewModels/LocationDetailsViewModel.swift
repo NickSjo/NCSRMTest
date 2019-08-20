@@ -42,7 +42,7 @@ class LocationDetailsViewModel {
         status = .loading
         notifyObserver()
         
-        RESTClient.shared.performDataTask(with: location.url) { [weak self] (result: RESTClientResult<Location>) in
+        JSONClient.shared.performDataTask(with: location.url) { [weak self] (result: JSONClientResult<Location>) in
             switch result {
             case .success(let location):
                 self?.status = .loaded(nil)
