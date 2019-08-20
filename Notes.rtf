@@ -1,0 +1,85 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw12240\paperh15840\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs36 \cf2 \expnd0\expndtw0\kerning0
+Assumptions and skipped things\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs22 \cf2 A list of assumptions and things that have been skipped to save some time. \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 HTTPClient (see class HTTPClient)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0 \cf2 A small client used to make HTTP requests. In a real world project error handling could have been more robust, e.g. check for network connection, retrying failing requests (if needed). \
+The HTTPClient handles HTTP response status codes other than 200-299 as errors (unexpectedStatusCodeError), in a real life application it could be wise to move this logic to a different layer to handle and extract error messages according to a given API's standards. In this project I opted for not extracting the error messages and therefore decided to handle status codes in the HTTPClient. \
+According to the Rick and Morty API documentation all requests are GET requests. Therefore, the HTTPClient defaults to only perform GET requests. \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 ImageCache (see class ImageCache)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0 \cf2 Stores images in memory in a dictionary so that the app is not fetching the same image more than once for the app session. In a real world project it may be a good idea to store images on disk, for example by using the documents directory.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 FavoritesCache (see class FavoritesCache)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0 \cf2 Stores favorite chacacters. To persist favorite data between app sessions data is stored on disk in the app's document directory. To avoid writing data to disk and reading data from disk too often, an in memory cache is used to keep track of changes while the app is active. When the app enters background changes are written to disk, and when the app becomes active data is read from disk. In a real world project it could be more suitable to instead use Core Data to persist favorites between app sessions.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Logging\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0 \cf2 This app does not log anything, in a real world project it could be a good idea to log to debugging console for easier debugging. \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Navigation\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0 \cf2 In this project the view controllers will perform and handle navigation (i.e. handling navigation between view controllers), and thereby having flow logic. In a smaller app this is probably fine but in a larger project where view controllers may be reused in different flows this isn\'92t optimal. My preference would be to introduce flow coordinators to move the flow logic out of the view controllers. \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Accessibility\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0 \cf2 General functionality for accessibility hasn\'92t been implemented, though the app supports dynamic type. \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 \
+Launch screen\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0 \cf2 App uses the default launch screen. \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 \
+App icon\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0 \cf2 No app icons has been added to the app.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Localizable.strings\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0 \cf2 Use Localizable.strings for titles, empty messages and error messages instead of hard coded in app. \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 \
+Git\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0 \cf2 For this project I have only used the master branch. In a real world project it would probably be advisable to use more branches or even a Git workflow pattern like Gitflow. }
