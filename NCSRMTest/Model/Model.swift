@@ -13,7 +13,7 @@ struct CharactersResponse: Decodable {
     var results: [Character]
 }
 
-struct Character: Decodable, Hashable {
+struct Character: Codable, Hashable {
     var id: Int
     var name: String
     var origin: Origin
@@ -21,7 +21,7 @@ struct Character: Decodable, Hashable {
     var image: String
 }
 
-struct Location: Decodable, Hashable {
+struct Location: Codable, Hashable {
     var name: String
     var url: String
     var type: String?
@@ -30,7 +30,7 @@ struct Location: Decodable, Hashable {
     var created: String?
 }
 
-struct Origin: Decodable, Hashable {
+struct Origin: Codable, Hashable {
     var name: String
     var url: String
 }

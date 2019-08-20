@@ -15,6 +15,8 @@ extension Notification.Name {
 class FavoritesCache {
     static let shared = FavoritesCache()
     
+    private static let fileName = "favoritecharacters"
+    
     var orderedFavorites: [Character] {
         return favorites.sorted(by: { $0.id < $1.id })
     }
@@ -56,4 +58,19 @@ class FavoritesCache {
         favorites.removeAll()
         NotificationCenter.default.post(Notification(name: .favoritesDidChange))
     }
+    
+    func loadFromPersistentStorage() {
+        if let storedFile: [Character] = DocumentsDirectoryHandler.shared.getContents(FavoritesCache.fileName) {
+            favorites = Set(storedFile)
+        } else {
+            favorites = []
+        }
+        
+        NotificationCenter.default.post(Notification(name: .favoritesDidChange))
+    }
+    
+    func saveToPersistentStorage() {
+        DocumentsDirectoryHandler.shared.createFile(FavoritesCache.fileName, object: Array(favorites))
+    }
+    
 }
